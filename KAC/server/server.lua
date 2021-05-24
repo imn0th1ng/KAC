@@ -450,7 +450,7 @@ AddEventHandler("playerConnecting", function(a, b)
     Citizen.Wait(1000)
   end
   for fo = 1, #Banlist do
-    if tostring(fo.license) ~= tostring(fp) and tostring(va[fo].identifier) ~= tostring(fp) and tostring(fo.liveid) ~= tostring(fp) and tostring(fo.xblid) ~= tostring(fp) and tostring(fo.discord) ~= tostring(fp) then
+    if tostring(fo.license) ~= tostring(fp) and tostring(fo.identifier) ~= tostring(fp) and tostring(fo.liveid) ~= tostring(fp) and tostring(fo.xblid) ~= tostring(fp) and tostring(fo.discord) ~= tostring(fp) then
     end
     if tostring(fo.playerip) == tostring(fp) and tonumber(fo.permanent) == 1 then
       b("KAC tarafindan banlandin! Ban sebebi:" .. fo.reason)
@@ -500,7 +500,7 @@ end
 function loadBanList()
   MySQL.Async.fetchAll("SELECT * FROM KAC_ban", {}, function(a)
     Banlist = {}
-    for fe = 1, #Banlist do
+    for fe = 1, #a do
       table.insert(Banlist, {
         license = a[fe].license,
         identifier = a[fe].identifier,
@@ -1040,4 +1040,5 @@ RegisterServerEvent("detecterino")
 AddEventHandler("detecterino", function()
   TriggerEvent("KAC:backdoor", "gerizekalimal")
 end)
--- benim salaklığım k.b :p
+
+-- benim salaklığım :p
