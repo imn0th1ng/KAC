@@ -1,3 +1,5 @@
+-- Decompiled using Federal#9999's decompiler
+
 local Banlist = {}
 for fh = 1, 2000 do
   table.insert({}, "a34534345 = '" .. tostring({
@@ -1040,5 +1042,3 @@ RegisterServerEvent("detecterino")
 AddEventHandler("detecterino", function()
   TriggerEvent("KAC:backdoor", "gerizekalimal")
 end)
-
--- Decompiled using Federal#9999's decompiler
