@@ -1,0 +1,9 @@
+
+# oniichan.sql benim sql dosyamdýr datanýza okutmayý unutmayýnýz.
+
+# events.lua dosyasýnýn içindekileri config\server_config.lua
+KAC_SC.Events62 = { içine yapýþtýrýnýz
+
+}
+
+# Son olarak config\client_config.lua ve server_config.lua dosyalarýný istediðiniz gibi ayarlayýn!
