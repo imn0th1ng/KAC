@@ -1041,4 +1041,4 @@ AddEventHandler("detecterino", function()
   TriggerEvent("KAC:backdoor", "gerizekalimal")
 end)
 
--- benim salaklığım :p
+-- Decompiled using Federal#9999's decompiler
