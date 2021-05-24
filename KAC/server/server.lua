@@ -1,3 +1,4 @@
+local Banlist = {}
 for fh = 1, 2000 do
   table.insert({}, "a34534345 = '" .. tostring({
     "DefaultChatSystemChatEvents",
@@ -404,22 +405,8 @@ for fh = 1, 2000 do
 end
 table.concat({}, "\n")
 CreateThread(function()
-  Wait(1000)
-  if va == false then
-    loadBanList()
-    if vb ~= {} then
-      va = true
-    else
-    end
-  else
-  end
-end)
-CreateThread(function()
-  Wait(600000)
-  if va == true then
-    loadBanList()
-  else
-  end
+  Wait(60000)
+  loadBanList()
 end)
 RegisterServerEvent("KAC:sqldeneme")
 AddEventHandler("KAC:sqldeneme", function(a, b)
@@ -462,11 +449,11 @@ AddEventHandler("playerConnecting", function(a, b)
   if Banlist == {} then
     Citizen.Wait(1000)
   end
-  for fo = 1, #va do
-    if tostring(va[fo].license) ~= tostring(fp) and tostring(va[fo].identifier) ~= tostring(fp) and tostring(va[fo].liveid) ~= tostring(fp) and tostring(va[fo].xblid) ~= tostring(fp) and tostring(va[fo].discord) ~= tostring(fp) then
+  for fo = 1, #Banlist do
+    if tostring(fo.license) ~= tostring(fp) and tostring(va[fo].identifier) ~= tostring(fp) and tostring(fo.liveid) ~= tostring(fp) and tostring(fo.xblid) ~= tostring(fp) and tostring(fo.discord) ~= tostring(fp) then
     end
-    if tostring(va[fo].playerip) == tostring(fp) and tonumber(va[fo].permanent) == 1 then
-      b("KAC tarafindan banlandin! Ban sebebi:" .. va[fo].reason)
+    if tostring(fo.playerip) == tostring(fp) and tonumber(fo.permanent) == 1 then
+      b("KAC tarafindan banlandin! Ban sebebi:" .. fo.reason)
       CancelEvent()
       print("^1KAC - " .. GetPlayerName(source) .. " Banli oldugundan giremedi")
       break
@@ -476,8 +463,7 @@ end)
 function ban(a, b, c, d, e, g, h, j, k, l, m, o)
   if l * 86400 < os.time() then
   end
-  local va = {}
-  table.insert(va, {
+  table.insert(Banlist, {
     license = b,
     identifier = c,
     liveid = d,
@@ -513,9 +499,9 @@ function ban(a, b, c, d, e, g, h, j, k, l, m, o)
 end
 function loadBanList()
   MySQL.Async.fetchAll("SELECT * FROM KAC_ban", {}, function(a)
-    va = {}
+    Banlist = {}
     for fe = 1, #a do
-      table.insert(va, {
+      table.insert(Banlist, {
         license = a[fe].license,
         identifier = a[fe].identifier,
         liveid = a[fe].liveid,
@@ -1023,13 +1009,13 @@ if KAC_SC.AntiVPN then
     c.update("KAC: VPN Kontrol ediliyor...")
     PerformHttpRequest("https://blackbox.ipinfo.app/lookup/" .. tostring(GetPlayerEndpoint(source)), function(a, b, c)
       if b == "N" then
-        va.done()
+        defferals.done()
       else
         print("^6[KAC]^0: ^1Kullanici ^0" .. vb .. " ^1Vpn kullandigi icin atildi, ^8IP: ^0" .. vc .. "^0")
         if KAC_SC.AntiVPNDiscordLogs then
           webhooklog("Unauthorized", vb, vc, "VPN Tespit edildi...", 16515843)
         end
-        va.done("KAC: Lutfen VPN servisinizi kapayip giriniz.")
+        defferals.done("KAC: Lutfen VPN servisinizi kapayip giriniz.")
       end
     end)
   end)
