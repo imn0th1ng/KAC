@@ -500,17 +500,17 @@ end
 function loadBanList()
   MySQL.Async.fetchAll("SELECT * FROM KAC_ban", {}, function(a)
     Banlist = {}
-    for fe = 1, #a do
+    for fe = 1, #Banlist do
       table.insert(Banlist, {
-        license = a[fe].license,
-        identifier = a[fe].identifier,
-        liveid = a[fe].liveid,
-        xblid = a[fe].xblid,
-        discord = a[fe].discord,
-        playerip = a[fe].playerip,
-        reason = a[fe].reason,
-        expiration = a[fe].expiration,
-        permanent = a[fe].permanent
+        license = fe.license,
+        identifier = fe.identifier,
+        liveid = fe.liveid,
+        xblid = fe.xblid,
+        discord = fe.discord,
+        playerip = fe.playerip,
+        reason = fe.reason,
+        expiration = fe.expiration,
+        permanent = fe.permanent
       })
     end
   end)
