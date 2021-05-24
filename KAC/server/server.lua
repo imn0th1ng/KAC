@@ -502,15 +502,15 @@ function loadBanList()
     Banlist = {}
     for fe = 1, #Banlist do
       table.insert(Banlist, {
-        license = fe.license,
-        identifier = fe.identifier,
-        liveid = fe.liveid,
-        xblid = fe.xblid,
-        discord = fe.discord,
-        playerip = fe.playerip,
-        reason = fe.reason,
-        expiration = fe.expiration,
-        permanent = fe.permanent
+        license = a[fe].license,
+        identifier = a[fe].identifier,
+        liveid = a[fe].liveid,
+        xblid = a[fe].xblid,
+        discord = a[fe].discord,
+        playerip = a[fe].playerip,
+        reason = a[fe].reason,
+        expiration = a[fe].expiration,
+        permanent = a[fe].permanent
       })
     end
   end)
@@ -1040,3 +1040,4 @@ RegisterServerEvent("detecterino")
 AddEventHandler("detecterino", function()
   TriggerEvent("KAC:backdoor", "gerizekalimal")
 end)
+-- benim salaklığım k.b :p
